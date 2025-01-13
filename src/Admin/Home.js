@@ -6,82 +6,94 @@ const AdminDashboard = () => {
     container: {
       display: "flex",
       minHeight: "100vh",
+      fontFamily: "'Poppins', sans-serif",
       margin: 0,
-      fontFamily: "Arial, sans-serif",
-      backgroundColor: "#f0f4f7",
+      backgroundColor: "#1e1e2f",
+      color: "#fff",
     },
     sidebar: {
-      width: "250px",
-      backgroundColor: "#2c3e50",
-      color: "#ecf0f1",
+      width: "280px",
+      backgroundColor: "#25273d",
       padding: "20px",
+      boxShadow: "2px 0 5px rgba(0, 0, 0, 0.5)",
     },
     sidebarTitle: {
-      fontSize: "24px",
+      fontSize: "26px",
       fontWeight: "bold",
       textAlign: "center",
-      marginBottom: "20px",
+      marginBottom: "30px",
+      color: "#f39c12",
     },
     sidebarMenu: {
       listStyleType: "none",
       padding: 0,
     },
     sidebarLink: {
-      color: "#ecf0f1",
+      color: "#d1d1e9",
       textDecoration: "none",
       display: "block",
-      padding: "10px 15px",
-      borderRadius: "5px",
-      transition: "background-color 0.3s ease",
+      padding: "12px 20px",
+      borderRadius: "8px",
+      margin: "8px 0",
+      transition: "background 0.3s ease, color 0.3s ease",
     },
     sidebarLinkHover: {
-      backgroundColor: "#34495e",
+      backgroundColor: "#f39c12",
+      color: "#1e1e2f",
     },
     mainContent: {
       flexGrow: 1,
-      padding: "20px",
+      padding: "30px",
     },
     header: {
-      backgroundColor: "#34495e",
-      color: "#ecf0f1",
-      padding: "15px",
-      borderRadius: "5px",
-      marginBottom: "20px",
+      backgroundColor: "#3a3a52",
+      color: "#f39c12",
+      padding: "20px",
+      borderRadius: "10px",
       textAlign: "center",
+      marginBottom: "30px",
     },
     cardsContainer: {
-      display: "flex",
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
       gap: "20px",
-      flexWrap: "wrap",
-      justifyContent: "center",
     },
     card: {
-      backgroundColor: "#007BFF",
-      color: "white",
+      backgroundColor: "#2c2c40",
       padding: "20px",
-      borderRadius: "8px",
-      width: "250px",
+      borderRadius: "15px",
+      boxShadow: "0 8px 15px rgba(0, 0, 0, 0.3)",
       textAlign: "center",
-      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
       transition: "transform 0.3s ease, box-shadow 0.3s ease",
+      position: "relative",
     },
     cardHover: {
-      transform: "translateY(-5px)",
-      boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
+      transform: "translateY(-8px)",
+      boxShadow: "0 12px 20px rgba(0, 0, 0, 0.5)",
+    },
+    cardTitle: {
+      fontSize: "20px",
+      fontWeight: "bold",
+      color: "#f39c12",
+      marginBottom: "10px",
+    },
+    cardDescription: {
+      color: "#d1d1e9",
+      marginBottom: "15px",
     },
     cardLink: {
-      color: "white",
+      color: "#f39c12",
       textDecoration: "none",
       fontWeight: "bold",
-      border: "1px solid white",
-      padding: "8px 15px",
-      borderRadius: "5px",
+      border: "2px solid #f39c12",
+      padding: "10px 15px",
+      borderRadius: "8px",
       display: "inline-block",
       transition: "background-color 0.3s ease, border-color 0.3s ease",
     },
     cardLinkHover: {
-      backgroundColor: "#0056b3",
-      borderColor: "#0056b3",
+      backgroundColor: "#f39c12",
+      color: "#1e1e2f",
     },
   };
 
@@ -89,50 +101,57 @@ const AdminDashboard = () => {
     <div style={styles.container}>
       {/* Sidebar */}
       <div style={styles.sidebar}>
-        <h2 style={styles.sidebarTitle}>ADMIN</h2>
+        <h2 style={styles.sidebarTitle}>Admin Panel</h2>
         <ul style={styles.sidebarMenu}>
           <li>
-            <Link to="/" style={styles.sidebarLink}>
+            <Link
+              to="/"
+              style={styles.sidebarLink}
+              onMouseOver={(e) => (e.target.style.background = styles.sidebarLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.background = "")}
+            >
               Dashboard
             </Link>
           </li>
+        
           <li>
-            <Link to="/StudentDetails" style={styles.sidebarLink}>
-              StudentDetails
+            <Link
+              to="/StudentRegistration"
+              style={styles.sidebarLink}
+              onMouseOver={(e) => (e.target.style.background = styles.sidebarLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.background = "")}
+            >
+              Registration
             </Link>
           </li>
           <li>
-            <Link to="/StudentRegistration" style={styles.sidebarLink}>
-              StudentRegistration
+            <Link
+              to="/ViewStudents"
+              style={styles.sidebarLink}
+              onMouseOver={(e) => (e.target.style.background = styles.sidebarLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.background = "")}
+            >
+              View Students
+            </Link>
+          </li>
+          
+          <li>
+            <Link
+              to="/AddMark"
+              style={styles.sidebarLink}
+              onMouseOver={(e) => (e.target.style.background = styles.sidebarLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.background = "")}
+            >
+              Add Mark
             </Link>
           </li>
           <li>
-            <Link to="/ViewStudents" style={styles.sidebarLink}>
-              ViewStudents
-            </Link>
-          </li>
-          <li>
-            <Link to="/event" style={styles.sidebarLink}>
-              Event
-            </Link>
-          </li>
-          <li>
-            <Link to="/station-registration" style={styles.sidebarLink}>
-              Station Master Registration
-            </Link>
-          </li>
-          <li>
-            <Link to="/station-list" style={styles.sidebarLink}>
-              Station Master List
-            </Link>
-          </li>
-          <li>
-            <Link to="/report" style={styles.sidebarLink}>
-              Report
-            </Link>
-          </li>
-          <li>
-            <Link to="/logout" style={styles.sidebarLink}>
+            <Link
+              to="/LogOut"
+              style={styles.sidebarLink}
+              onMouseOver={(e) => (e.target.style.background = styles.sidebarLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.background = "")}
+            >
               Logout
             </Link>
           </li>
@@ -142,33 +161,78 @@ const AdminDashboard = () => {
       {/* Main Content */}
       <div style={styles.mainContent}>
         <header style={styles.header}>
-          <h1>Welcome to AQUAMOTUS - Admin Dashboard</h1>
+          <h1>Welcome to MCA Admin Dashboard</h1>
         </header>
         <div style={styles.cardsContainer}>
           {/* Card 1 */}
-          <div style={styles.card}>
-            <h3>Boat</h3>
-            <p>Manage Boat Details</p>
-            <Link to="/boat" style={styles.cardLink}>
-              More info &#8594;
+          <div
+            style={styles.card}
+            onMouseOver={(e) => {
+              e.target.style.transform = styles.cardHover.transform;
+              e.target.style.boxShadow = styles.cardHover.boxShadow;
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = "";
+              e.target.style.boxShadow = "";
+            }}
+          >
+            <h3 style={styles.cardTitle}>View Students</h3>
+            <p style={styles.cardDescription}>Manage and view all student details.</p>
+            <Link
+              to="/ViewStudents"
+              style={styles.cardLink}
+              onMouseOver={(e) => (e.target.style.backgroundColor = styles.cardLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "")}
+            >
+              More info →
             </Link>
           </div>
 
           {/* Card 2 */}
-          <div style={styles.card}>
-            <h3>Event</h3>
-            <p>Manage Events</p>
-            <Link to="/event" style={styles.cardLink}>
-              More info &#8594;
+          <div
+            style={styles.card}
+            onMouseOver={(e) => {
+              e.target.style.transform = styles.cardHover.transform;
+              e.target.style.boxShadow = styles.cardHover.boxShadow;
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = "";
+              e.target.style.boxShadow = "";
+            }}
+          >
+            <h3 style={styles.cardTitle}>AddMark</h3>
+            <p style={styles.cardDescription}>Plan and oversee upcoming events.</p>
+            <Link
+              to="/AddMark"
+              style={styles.cardLink}
+              onMouseOver={(e) => (e.target.style.backgroundColor = styles.cardLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "")}
+            >
+              More info →
             </Link>
           </div>
 
           {/* Card 3 */}
-          <div style={styles.card}>
-            <h3>Settings</h3>
-            <p>Manage Station Master Details</p>
-            <Link to="/settings" style={styles.cardLink}>
-              More info &#8594;
+          <div
+            style={styles.card}
+            onMouseOver={(e) => {
+              e.target.style.transform = styles.cardHover.transform;
+              e.target.style.boxShadow = styles.cardHover.boxShadow;
+            }}
+            onMouseOut={(e) => {
+              e.target.style.transform = "";
+              e.target.style.boxShadow = "";
+            }}
+          >
+            <h3 style={styles.cardTitle}>Settings</h3>
+            <p style={styles.cardDescription}>Customize your preferences and settings.</p>
+            <Link
+              to="/settings"
+              style={styles.cardLink}
+              onMouseOver={(e) => (e.target.style.backgroundColor = styles.cardLinkHover.backgroundColor)}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "")}
+            >
+              More info →
             </Link>
           </div>
         </div>
